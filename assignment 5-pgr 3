@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class MinMaxSum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the size of the array
+        int n = scanner.nextInt();
+
+        // Input the array elements
+        long[] arr = new long[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextLong();
+        }
+
+        // Calculate the sum of all elements
+        long totalSum = 0;
+        for (long num : arr) {
+            totalSum += num;
+        }
+
+        // Find the minimum and maximum sums
+        long maxSum = totalSum - findMin(arr);
+        long minSum = totalSum - findMax(arr);
+
+        // Output the results
+        System.out.println(minSum + " " + maxSum);
+    }
+
+    // Function to find the minimum value in an array
+    static long findMin(long[] arr) {
+        long min = Long.MAX_VALUE;
+        for (long num : arr) {
+            if (num < min) {
+                min = num;
+            }
+        }
+        return min;
+    }
+
+    // Function to find the maximum value in an array
+    static long findMax(long[] arr) {
+        long max = Long.MIN_VALUE;
+        for (long num : arr) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+}
